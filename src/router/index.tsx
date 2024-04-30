@@ -6,6 +6,13 @@ const Mine = lazy(() => import('@/views/mine'))
 const Friend = lazy(() => import('@/views/friend'))
 const Download = lazy(() => import('@/views/download'))
 
+const Recommend = lazy(() => import('@/views/discover/c-views/recommend'))
+const TopList = lazy(() => import('@/views/discover/c-views/toplist'))
+const PlayList = lazy(() => import('@/views/discover/c-views/playlist'))
+const DjRadio = lazy(() => import('@/views/discover/c-views/djradio'))
+const Artist = lazy(() => import('@/views/discover/c-views/artist'))
+const Album = lazy(() => import('@/views/discover/c-views/album'))
+
 const routes: RouteObject[] = [
   {
     path: '/',
@@ -13,7 +20,37 @@ const routes: RouteObject[] = [
   },
   {
     path: '/discover',
-    element: <Discover />
+    element: <Discover />,
+    children: [
+      {
+        path: '/discover',
+        element: <Navigate to="/discover/recommend" />
+      },
+      {
+        path: '/discover/recommend',
+        element: <Recommend />
+      },
+      {
+        path: '/discover/toplist',
+        element: <TopList />
+      },
+      {
+        path: '/discover/playlist',
+        element: <PlayList />
+      },
+      {
+        path: '/discover/djradio',
+        element: <DjRadio />
+      },
+      {
+        path: '/discover/artist',
+        element: <Artist />
+      },
+      {
+        path: '/discover/album',
+        element: <Album />
+      }
+    ]
   },
   {
     path: '/mine',

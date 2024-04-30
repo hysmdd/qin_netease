@@ -10,6 +10,7 @@
     "@types/node": "^16.18.96",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
+    "normalize.css": "^8.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -44,6 +45,7 @@
   "devDependencies": {
     "@craco/craco": "^7.1.0",
     "@eslint/js": "^9.1.1",
+    "craco-less": "^3.0.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",

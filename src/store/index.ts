@@ -6,10 +6,12 @@ import {
   useDispatch,
   useSelector
 } from 'react-redux'
+import recommendReducer from '@/views/discover/c-views/recommend/store/recommend'
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer
+    counter: counterReducer,
+    recommend: recommendReducer
   }
 })
 

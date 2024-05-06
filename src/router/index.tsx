@@ -57,7 +57,7 @@ const routes: RouteObject[] = [
     element: <Mine />
   },
   {
-    path: '/friend',
+    path: '/focus',
     element: <Friend />
   },
   {

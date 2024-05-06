@@ -10,6 +10,11 @@ export const HeaderWrapper = styled.div`
     display: flex;
     justify-content: space-between;
   }
+
+  .divider {
+    height: 5px;
+    background-color: #c20c0c;
+  }
 `
 
 export const HeaderLeft = styled.div`
@@ -36,9 +41,9 @@ export const HeaderLeft = styled.div`
         color: #ccc;
       }
 
-      :last-of-type a {
+      &:last-of-type a {
         position: relative;
-        ::after {
+        &::after {
           position: absolute;
           content: '';
           width: 28px;

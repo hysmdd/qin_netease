@@ -1,38 +1,19 @@
 import React, { Suspense } from 'react'
-import { Link, useRoutes } from 'react-router-dom'
+import { useRoutes } from 'react-router-dom'
 import routes from './router'
-import { shallowEqualApp, useAppDispatch, useAppSelector } from './store'
-import { changeMessageAction } from './store/modules/counter'
+import AppHeader from './components/app-header'
+import AppFooter from './components/app-footer'
 
 function App() {
-  const { count, message } = useAppSelector(
-    (state) => ({
-      count: state.counter.count,
-      message: state.counter.message
-    }),
-    shallowEqualApp
-  )
-  const dispatch = useAppDispatch()
-
-  /** 事件处理函数 */
-  const handleChangeMessage = () => {
-    dispatch(changeMessageAction('终会与你同行'))
-  }
-
   return (
     <div className="App">
-      <div className="nav">
-        <Link to="/discover">发现音乐</Link>
-        <Link to="/mine">我的音乐</Link>
-        <Link to="/friend">关注</Link>
-        <Link to="/download">下载客户端</Link>
-      </div>
-      <h2>当前计数：{count}</h2>
-      <h2>当前消息：{message}</h2>
-      <button onClick={handleChangeMessage}>修改message</button>
+      <AppHeader />
+
       <Suspense fallback="">
         <div className="main">{useRoutes(routes)}</div>
       </Suspense>
+
+      <AppFooter />
     </div>
   )
 }

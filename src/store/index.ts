@@ -1,6 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './modules/counter'
-import { TypedUseSelectorHook, useSelector } from 'react-redux'
+import {
+  TypedUseSelectorHook,
+  shallowEqual,
+  useDispatch,
+  useSelector
+} from 'react-redux'
 
 const store = configureStore({
   reducer: {
@@ -9,8 +14,11 @@ const store = configureStore({
 })
 
 type getStateFnType = typeof store.getState
-export type IRootState = ReturnType<getStateFnType>
+type IRootState = ReturnType<getStateFnType>
+type getDispatchFnType = typeof store.dispatch
 
 export const useAppSelector: TypedUseSelectorHook<IRootState> = useSelector
+export const useAppDispatch: () => getDispatchFnType = useDispatch
+export const shallowEqualApp = shallowEqual
 
 export default store

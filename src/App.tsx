@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react'
 import { Link, useRoutes } from 'react-router-dom'
 import routes from './router'
-import { shallowEqual, useSelector, useStore } from 'react-redux'
-import { useAppSelector, type IRootState } from './store'
+import { shallowEqualApp, useAppDispatch, useAppSelector } from './store'
+import { changeMessageAction } from './store/modules/counter'
 
 function App() {
   const { count, message } = useAppSelector(
@@ -10,8 +10,15 @@ function App() {
       count: state.counter.count,
       message: state.counter.message
     }),
-    shallowEqual
+    shallowEqualApp
   )
+  const dispatch = useAppDispatch()
+
+  /** 事件处理函数 */
+  const handleChangeMessage = () => {
+    dispatch(changeMessageAction('终会与你同行'))
+  }
+
   return (
     <div className="App">
       <div className="nav">
@@ -22,6 +29,7 @@ function App() {
       </div>
       <h2>当前计数：{count}</h2>
       <h2>当前消息：{message}</h2>
+      <button onClick={handleChangeMessage}>修改message</button>
       <Suspense fallback="">
         <div className="main">{useRoutes(routes)}</div>
       </Suspense>

@@ -1,7 +1,8 @@
-import { shallowEqualApp, useAppDispatch } from '@/store'
+import { useAppDispatch } from '@/store'
 import React, { memo, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
 import { fetchBannerDataAction } from './store/recommend'
+import TopBanner from './c-cpns/top-banner'
 
 interface IProps {
   children?: ReactNode
@@ -14,7 +15,12 @@ const Recommend: FC<IProps> = () => {
     dispatch(fetchBannerDataAction())
   }, [])
 
-  return <div>111</div>
+  return (
+    <div>
+      <TopBanner></TopBanner>
+      Recommend
+    </div>
+  )
 }
 
 export default memo(Recommend)

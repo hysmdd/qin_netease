@@ -1,6 +1,7 @@
 import React, { memo, useRef } from 'react'
 import { ElementRef, FC, ReactNode, useState } from 'react'
 import { Carousel } from 'antd'
+import classNames from 'classnames'
 
 import { BannerControl, BannerLeft, BannerRight, BannerWrapper } from './style'
 import { shallowEqualApp, useAppSelector } from '@/store'
@@ -34,6 +35,10 @@ const TopBanner: FC<IProps> = () => {
   }
 
   /** 事件处理函数 */
+  const handleBeforeChange = () => {
+    setCurrentIndex(-1)
+  }
+
   const handleAfterChange = (current: number) => {
     setCurrentIndex(current)
   }
@@ -47,9 +52,9 @@ const TopBanner: FC<IProps> = () => {
   }
 
   /** 获取背景图片 */
-  let bgImageUrl = banners[currentIndex]?.imageUrl
-  if (bgImageUrl) {
-    bgImageUrl = bgImageUrl + '?imageView&blur=40x20'
+  let bgImageUrl
+  if (currentIndex >= 0 && banners.length > 0) {
+    bgImageUrl = banners[currentIndex]?.imageUrl + '?imageView&blur=40x20'
   }
 
   return (
@@ -61,7 +66,9 @@ const TopBanner: FC<IProps> = () => {
           <Carousel
             ref={bannerRef}
             autoplay
+            dots={false}
             effect="fade"
+            beforeChange={handleBeforeChange}
             afterChange={handleAfterChange}
           >
             {banners.map((item: any) => {
@@ -78,6 +85,19 @@ const TopBanner: FC<IProps> = () => {
               )
             })}
           </Carousel>
+          <ul className="dots">
+            {banners.map((item: any, index: number) => {
+              return (
+                <li key={item.imageUrl}>
+                  <span
+                    className={classNames('item', {
+                      active: currentIndex === index
+                    })}
+                  ></span>
+                </li>
+              )
+            })}
+          </ul>
         </BannerLeft>
         <BannerRight>111</BannerRight>
         <BannerControl>

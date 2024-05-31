@@ -35,9 +35,9 @@ const TopBanner: FC<IProps> = () => {
   }
 
   /** 事件处理函数 */
-  const handleBeforeChange = () => {
-    setCurrentIndex(-1)
-  }
+  // const handleBeforeChange = () => {
+  //   setCurrentIndex(-1)
+  // }
 
   const handleAfterChange = (current: number) => {
     setCurrentIndex(current)
@@ -68,7 +68,6 @@ const TopBanner: FC<IProps> = () => {
             autoplay
             dots={false}
             effect="fade"
-            beforeChange={handleBeforeChange}
             afterChange={handleAfterChange}
           >
             {banners.map((item: any) => {

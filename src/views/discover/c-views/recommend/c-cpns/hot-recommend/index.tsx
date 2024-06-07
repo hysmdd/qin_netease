@@ -10,7 +10,11 @@ interface IProps {
 const HotRecommend: FC<IProps> = () => {
   return (
     <RecommendWrapper>
-      <SectionHeaderV1 />
+      <SectionHeaderV1
+        title="热门推荐"
+        keywords={['华语', '流行', '摇滚', '民谣', '电子']}
+        moreLink="/discover/playlist"
+      />
       HotRecommend
     </RecommendWrapper>
   )

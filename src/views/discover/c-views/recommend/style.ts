@@ -1,16 +1,14 @@
 import styled from 'styled-components'
 
-export const RecommendWrapper = styled.div`
-  > .content {
-    border: 1px solid #d3d3d3;
-    width: 980px;
-    background-image: url(${require('@/assets/img/wrap-bg.png')});
-    background-size: 103%;
-    display: flex;
-  }
-`
+export const RecommendWrapper = styled.div``
 
-export const RecommendSection = styled.div``
+export const RecommendSection = styled.div`
+  border: 1px solid #d3d3d3;
+  width: 980px;
+  background-image: url(${require('@/assets/img/wrap-bg.png')});
+  background-size: 103%;
+  display: flex;
+`
 
 export const RecommendLeft = styled.div`
   padding: 20px;

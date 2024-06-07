@@ -8,20 +8,16 @@ export const RecommendWrapper = styled.div`
     background-size: 103%;
     display: flex;
   }
-
-  .left {
-    padding: 20px;
-    width: 729px;
-  }
-
-  .right {
-    margin-left: 1px;
-    width: 250px;
-  }
 `
 
 export const RecommendSection = styled.div``
 
-export const RecommendLeft = styled.div``
+export const RecommendLeft = styled.div`
+  padding: 20px;
+  width: 729px;
+`
 
-export const RecommendRight = styled.div``
+export const RecommendRight = styled.div`
+  margin-left: 1px;
+  width: 250px;
+`

@@ -13,6 +13,7 @@ import {
   RecommendRight
 } from './style'
 import HotRecommend from './c-cpns/hot-recommend'
+import NewAlbum from './c-cpns/new-album'
 
 interface IProps {
   children?: ReactNode
@@ -32,6 +33,7 @@ const Recommend: FC<IProps> = () => {
       <RecommendSection className="content wrap-v2">
         <RecommendLeft className="left">
           <HotRecommend />
+          <NewAlbum />
         </RecommendLeft>
         <RecommendRight className="right">right</RecommendRight>
       </RecommendSection>

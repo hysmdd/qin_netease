@@ -17,9 +17,11 @@ const HotRecommend: FC<IProps> = () => {
     shallowEqualApp
   )
 
+  const sub = ['华语', '流行', '摇滚', '民谣', '电子']
+
   return (
     <HotWrapper>
-      <SectionHeaderV1 />
+      <SectionHeaderV1 title="热门推荐" sub={sub} />
       <div className="recommend-list">
         {hotRecommends.map((item) => {
           return (

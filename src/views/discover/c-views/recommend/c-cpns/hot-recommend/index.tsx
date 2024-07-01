@@ -3,6 +3,7 @@ import type { FC, ReactNode } from 'react'
 import { HotWrapper } from './style'
 import SectionHeaderV1 from '@/components/section-header-v1'
 import { shallowEqualApp, useAppSelector } from '@/store'
+import PlaylistItem from '@/components/playlist-item'
 
 interface IProps {
   children?: ReactNode
@@ -19,12 +20,12 @@ const HotRecommend: FC<IProps> = () => {
   return (
     <HotWrapper>
       <SectionHeaderV1 />
-      <div className="hot-recommend">
+      <div className="recommend-list">
         {hotRecommends.map((item) => {
           return (
-            <div className="item" key={item.id}>
+            <PlaylistItem itemData={item} key={item.id}>
               {item.name}
-            </div>
+            </PlaylistItem>
           )
         })}
       </div>

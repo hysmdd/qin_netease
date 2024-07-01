@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const AlbumWrapper = styled.div`
   margin-top: 20px;
 
-  .content {
+  > .content {
     height: 186px;
     background-color: #f5f5f5;
     border: 1px solid #d3d3d3;
@@ -35,6 +35,10 @@ export const AlbumWrapper = styled.div`
       &:hover {
         background-position: -320px -75px;
       }
+    }
+
+    .banner {
+      overflow: hidden;
     }
   }
 `

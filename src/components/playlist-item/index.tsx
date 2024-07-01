@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import { PlaylistItemWrapper } from './style'
+import { formatCount, getImageSize } from '@/utils/format'
 
 interface IProps {
   children?: ReactNode
@@ -13,12 +14,12 @@ const PlaylistItem: FC<IProps> = (props) => {
   return (
     <PlaylistItemWrapper>
       <div className="cover-top">
-        <img src={itemData.picUrl} alt={itemData.name} />
+        <img src={getImageSize(itemData.picUrl, 140)} alt={itemData.name} />
         <div className="cover sprite_cover">
           <div className="info sprite_cover">
             <span>
               <i className="sprite_icon headset"></i>
-              {itemData.playCount}
+              {formatCount(itemData.playCount)}
             </span>
             <i className="sprite_icon play"></i>
           </div>

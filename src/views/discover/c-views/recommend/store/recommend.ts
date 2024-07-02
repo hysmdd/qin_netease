@@ -1,28 +1,43 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getBanners, getHotRecommend, getNewAlbum } from '../service/recommend'
 
-export const fetchBannerDataAction = createAsyncThunk(
-  'banners',
-  async (arg, { dispatch }) => {
-    const res = await getBanners()
-    dispatch(changeBannersAction(res.banners))
-    // return res.banners
-  }
-)
+// export const fetchBannerDataAction = createAsyncThunk(
+//   'banners',
+//   async (arg, { dispatch }) => {
+//     const res = await getBanners()
+//     dispatch(changeBannersAction(res.banners))
+//     // return res.banners
+//   }
+// )
 
-export const fetchHotRecommendAction = createAsyncThunk(
-  'hotRecommend',
-  async (arg, { dispatch }) => {
-    const res = await getHotRecommend(8)
-    dispatch(changeHotRecommendAction(res.result))
-  }
-)
+// export const fetchHotRecommendAction = createAsyncThunk(
+//   'hotRecommend',
+//   async (arg, { dispatch }) => {
+//     const res = await getHotRecommend(8)
+//     dispatch(changeHotRecommendAction(res.result))
+//   }
+// )
 
-export const fetchNewAlbumAction = createAsyncThunk(
-  'newAlbum',
-  async (arg, { dispatch }) => {
-    const res = await getNewAlbum()
-    dispatch(changeNewAlbumsAction(res.albums))
+// export const fetchNewAlbumAction = createAsyncThunk(
+//   'newAlbum',
+//   async (arg, { dispatch }) => {
+//     const res = await getNewAlbum()
+//     dispatch(changeNewAlbumsAction(res.albums))
+//   }
+// )
+
+export const fetchRecommendDataAction = createAsyncThunk(
+  'fetchData',
+  (_, { dispatch }) => {
+    getBanners().then((res) => {
+      dispatch(changeBannersAction(res.banners))
+    })
+    getHotRecommend(8).then((res) => {
+      dispatch(changeHotRecommendAction(res.result))
+    })
+    getNewAlbum().then((res) => {
+      dispatch(changeNewAlbumsAction(res.albums))
+    })
   }
 )
 

@@ -1,11 +1,11 @@
 import { useAppDispatch } from '@/store'
 import React, { memo, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
-import {
-  fetchBannerDataAction,
-  fetchHotRecommendAction,
-  fetchNewAlbumAction
-} from './store/recommend'
+// import {
+//   fetchBannerDataAction,
+//   fetchHotRecommendAction,
+//   fetchNewAlbumAction
+// } from './store/recommend'
 import TopBanner from './c-cpns/top-banner'
 import {
   RecommendWrapper,
@@ -15,6 +15,7 @@ import {
 } from './style'
 import HotRecommend from './c-cpns/hot-recommend'
 import NewAlbum from './c-cpns/new-album'
+import { fetchRecommendDataAction } from './store/recommend'
 
 interface IProps {
   children?: ReactNode
@@ -24,9 +25,10 @@ const Recommend: FC<IProps> = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchBannerDataAction())
-    dispatch(fetchHotRecommendAction())
-    dispatch(fetchNewAlbumAction())
+    // dispatch(fetchBannerDataAction())
+    // dispatch(fetchHotRecommendAction())
+    // dispatch(fetchNewAlbumAction())
+    dispatch(fetchRecommendDataAction())
   }, [])
 
   return (

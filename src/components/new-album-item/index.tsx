@@ -14,7 +14,10 @@ const NewAlbumItem: FC<IProps> = (props) => {
     <AlbumWrapper>
       <div className="album-image">
         <img src={getImageSize(itemData?.picUrl, 100)} alt={itemData?.name} />
-        <a href="" className="cover sprite_cover"></a>
+        <a
+          href={'https://music.163.com/#/album?id=' + itemData.id}
+          className="cover sprite_cover"
+        ></a>
       </div>
       <div className="album-info">
         <div className="name">{itemData?.name}</div>

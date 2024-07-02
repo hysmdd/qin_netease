@@ -15,7 +15,10 @@ import {
 } from './style'
 import HotRecommend from './c-cpns/hot-recommend'
 import NewAlbum from './c-cpns/new-album'
-import { fetchRecommendDataAction } from './store/recommend'
+import {
+  fetchRankingDataAction,
+  fetchRecommendDataAction
+} from './store/recommend'
 import TopRanking from './c-cpns/top-ranking'
 
 interface IProps {
@@ -30,6 +33,7 @@ const Recommend: FC<IProps> = () => {
     // dispatch(fetchHotRecommendAction())
     // dispatch(fetchNewAlbumAction())
     dispatch(fetchRecommendDataAction())
+    dispatch(fetchRankingDataAction())
   }, [])
 
   return (

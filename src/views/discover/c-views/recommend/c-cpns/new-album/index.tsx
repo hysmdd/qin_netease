@@ -3,7 +3,7 @@ import type { FC, ReactNode, ElementRef } from 'react'
 import { AlbumWrapper } from './style'
 import SectionHeaderV1 from '@/components/section-header-v1'
 import { Carousel } from 'antd'
-import { useAppSelector } from '@/store'
+import { shallowEqualApp, useAppSelector } from '@/store'
 import NewAlbumItem from '@/components/new-album-item'
 
 interface IProps {
@@ -15,9 +15,12 @@ const NewAlbum: FC<IProps> = () => {
   const bannerRef = useRef<ElementRef<typeof Carousel>>(null)
 
   /** redux中获取数据 */
-  const { newAlbums } = useAppSelector((state) => ({
-    newAlbums: state.recommend.newAlbums
-  }))
+  const { newAlbums } = useAppSelector(
+    (state) => ({
+      newAlbums: state.recommend.newAlbums
+    }),
+    shallowEqualApp
+  )
 
   /** 事件处理函数 */
   function handlePrevClick() {

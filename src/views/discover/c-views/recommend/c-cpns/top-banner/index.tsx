@@ -18,7 +18,7 @@ const TopBanner: FC<IProps> = () => {
   /** 从store中获取数据 */
   const { banners } = useAppSelector(
     (state) => ({
-      banners: state.recommend.banners
+      banners: state.recommend?.banners
     }),
     shallowEqualApp
   )

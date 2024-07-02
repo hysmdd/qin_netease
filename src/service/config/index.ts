@@ -4,7 +4,6 @@
 export const TIME_OUT = 10000
 
 // 2.依赖当前环境: development/production
-console.log(process.env.NODE_ENV)
 let BASE_URL = ''
 if (process.env.NODE_ENV === 'development') {
   BASE_URL = 'https://netease.imqinhao.cn'

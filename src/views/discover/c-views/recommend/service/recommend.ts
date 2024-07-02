@@ -20,3 +20,12 @@ export function getNewAlbum() {
     url: '/album/newest'
   })
 }
+
+export function getPlaylistDetail(id: number) {
+  return qhRequest.get({
+    url: '/playlist/detail',
+    params: {
+      id
+    }
+  })
+}

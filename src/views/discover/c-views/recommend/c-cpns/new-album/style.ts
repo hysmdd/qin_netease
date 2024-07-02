@@ -38,8 +38,14 @@ export const AlbumWrapper = styled.div`
     }
 
     .banner {
-      width: 100%;
+      flex: 1;
       overflow: hidden;
+
+      .album-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
   }
 `

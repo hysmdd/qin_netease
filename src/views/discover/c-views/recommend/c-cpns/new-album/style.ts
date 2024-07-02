@@ -38,6 +38,7 @@ export const AlbumWrapper = styled.div`
     }
 
     .banner {
+      width: 100%;
       overflow: hidden;
     }
   }

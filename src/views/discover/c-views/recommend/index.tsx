@@ -20,6 +20,7 @@ import {
   fetchRecommendDataAction
 } from './store/recommend'
 import TopRanking from './c-cpns/top-ranking'
+import UserLogin from './c-cpns/user-login'
 
 interface IProps {
   children?: ReactNode
@@ -45,7 +46,11 @@ const Recommend: FC<IProps> = () => {
           <NewAlbum />
           <TopRanking />
         </RecommendLeft>
-        <RecommendRight className="right">right</RecommendRight>
+        <RecommendRight className="right">
+          <UserLogin />
+          <div>入驻歌手</div>
+          <div>热门主播</div>
+        </RecommendRight>
       </RecommendSection>
     </RecommendWrapper>
   )

@@ -18,7 +18,7 @@ const TopRanking: FC<IProps> = () => {
       <SectionHeaderV1 title="榜单" moreLink="/discover/toplist" />
       <div className="content">
         {rankings.map((item) => {
-          return <TopRankingItem key={item.id} itemData={item} />
+          return <TopRankingItem key={item?.id} itemData={item} />
         })}
       </div>
     </RankingWrapper>

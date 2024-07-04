@@ -47,7 +47,6 @@ const Recommend: FC<IProps> = () => {
         </RecommendLeft>
         <RecommendRight className="right">right</RecommendRight>
       </RecommendSection>
-      Recommend
     </RecommendWrapper>
   )
 }

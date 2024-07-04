@@ -6,6 +6,7 @@ export const LoginWrapper = styled.div`
   background-position: 0 0;
   padding: 16px 22px;
   display: flex;
+  background-size: 210%;
   flex-direction: column;
   align-items: center;
 

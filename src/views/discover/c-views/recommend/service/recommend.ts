@@ -29,3 +29,12 @@ export function getPlaylistDetail(id: number) {
     }
   })
 }
+
+export function getArtistList(limit = 30) {
+  return qhRequest.get({
+    url: '/artist/list',
+    params: {
+      limit
+    }
+  })
+}

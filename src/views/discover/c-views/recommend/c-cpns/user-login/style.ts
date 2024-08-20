@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const LoginWrapper = styled.div`
-  margin-left: -10px;
+  /* margin-left: -10px; */
   height: 126px;
   background-position: 0 0;
   padding: 16px 22px;

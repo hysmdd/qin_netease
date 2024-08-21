@@ -7,11 +7,13 @@ import {
   useSelector
 } from 'react-redux'
 import recommendReducer from '@/views/discover/c-views/recommend/store/recommend'
+import playerReducer from '@/views/player/store/player'
 
 const store = configureStore({
   reducer: {
     counter: counterReducer,
-    recommend: recommendReducer
+    recommend: recommendReducer,
+    player: playerReducer
   }
 })
 

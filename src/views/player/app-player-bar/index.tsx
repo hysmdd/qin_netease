@@ -8,12 +8,17 @@ import {
 } from './style'
 import { NavLink } from 'react-router-dom'
 import { Slider } from 'antd'
+import { useAppSelector } from '@/store'
+import { getImageSize } from '@/utils/format'
 
 interface IProps {
   children?: ReactNode
 }
 
 const AppPlayerBar: FC<IProps> = () => {
+  const { currentSong } = useAppSelector((state) => ({
+    currentSong: state.player.currentSong
+  }))
   return (
     <PlayerBarWrapper className="sprite_playbar">
       <div className="content wrap-v2">
@@ -26,17 +31,17 @@ const AppPlayerBar: FC<IProps> = () => {
           <NavLink to="/discover/player">
             <img
               className="image"
-              src="https://p2.music.126.net/x-jReyGkM5OTKUEtTqXGoA==/109951164597332931.jpg?param=34y34"
+              src={getImageSize(currentSong?.al?.picUrl, 50)}
               alt=""
             />
           </NavLink>
           <div className="info">
             <div className="song">
-              <span className="song-name">与我无关</span>
-              <span className="singer-name">阿冗</span>
+              <span className="song-name">{currentSong?.name}</span>
+              <span className="singer-name">{currentSong?.ar[0]?.name}</span>
             </div>
             <div className="progress">
-              <Slider />
+              <Slider value={35} />
               <div className="time">
                 <span className="current">00:52</span>
                 <span className="divider">/</span>

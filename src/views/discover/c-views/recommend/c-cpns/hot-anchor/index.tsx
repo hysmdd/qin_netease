@@ -13,7 +13,7 @@ const HotAnchor: FC<IProps> = () => {
     <AnchorWrapper>
       <SectionHeaderV2 title="热门主播" />
       <div className="anchors">
-        {hotRadios.map((item) => {
+        {hotRadios?.map((item) => {
           return (
             <div className="item" key={item.name}>
               <a href="" className="image">

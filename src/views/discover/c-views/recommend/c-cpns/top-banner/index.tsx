@@ -53,7 +53,7 @@ const TopBanner: FC<IProps> = () => {
 
   /** 获取背景图片 */
   let bgImageUrl
-  if (currentIndex >= 0 && banners.length > 0) {
+  if (currentIndex >= 0 && banners?.length > 0) {
     bgImageUrl = banners[currentIndex]?.imageUrl + '?imageView&blur=40x20'
   }
 
@@ -70,7 +70,7 @@ const TopBanner: FC<IProps> = () => {
             effect="fade"
             afterChange={handleAfterChange}
           >
-            {banners.map((item: any) => {
+            {banners?.map((item: any) => {
               return (
                 <div className="banner-item" key={item.imageUrl}>
                   <a href={getClickBannerUrl(item)}>
@@ -85,7 +85,7 @@ const TopBanner: FC<IProps> = () => {
             })}
           </Carousel>
           <ul className="dots">
-            {banners.map((item: any, index: number) => {
+            {banners?.map((item: any, index: number) => {
               return (
                 <li key={item.imageUrl}>
                   <span

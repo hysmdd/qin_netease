@@ -19,6 +19,8 @@ interface IProps {
 const AppPlayerBar: FC<IProps> = () => {
   /** 组件内部定义的数据 */
   const [isPlaying, setIsPlaying] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [duration, setDuration] = useState(0)
   const audioRef = useRef<HTMLAudioElement>(null)
   /** 从redux中获取数据 */
   const { currentSong } = useAppSelector(
@@ -33,13 +35,24 @@ const AppPlayerBar: FC<IProps> = () => {
     audioRef.current
       ?.play()
       .then(() => {
+        setIsPlaying(true)
         console.log('歌曲播放成功')
       })
       .catch((err) => {
         setIsPlaying(false)
         console.log('歌曲播放失败: ', err)
       })
+    // 获取音乐的总时长
+    setDuration(currentSong.dt)
   }, [currentSong])
+
+  /** 音乐播放的进度处理 */
+  function handleTimeUpdate() {
+    // 获取当前的播放时间
+    const currentTime = audioRef.current!.currentTime
+    const progress = ((currentTime * 1000) / duration) * 100
+    setProgress(progress)
+  }
 
   /** 组件内部的事件处理 */
   function handlePlayBtnClick() {
@@ -77,7 +90,11 @@ const AppPlayerBar: FC<IProps> = () => {
               <span className="singer-name">{currentSong?.ar[0]?.name}</span>
             </div>
             <div className="progress">
-              <Slider value={35} />
+              <Slider
+                step={0.5}
+                tooltip={{ formatter: null }}
+                value={progress}
+              />
               <div className="time">
                 <span className="current">00:52</span>
                 <span className="divider">/</span>
@@ -99,7 +116,7 @@ const AppPlayerBar: FC<IProps> = () => {
           </div>
         </PlayerBarOperator>
       </div>
-      <audio ref={audioRef} />
+      <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} />
     </PlayerBarWrapper>
   )
 }

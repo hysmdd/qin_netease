@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import type { FC, ReactNode } from 'react'
 import {
   PlayerBarControl,
@@ -8,23 +8,59 @@ import {
 } from './style'
 import { NavLink } from 'react-router-dom'
 import { Slider } from 'antd'
-import { useAppSelector } from '@/store'
+import { shallowEqualApp, useAppSelector } from '@/store'
 import { getImageSize } from '@/utils/format'
+import { getSongPlayUrl } from '@/utils/handle-player'
 
 interface IProps {
   children?: ReactNode
 }
 
 const AppPlayerBar: FC<IProps> = () => {
-  const { currentSong } = useAppSelector((state) => ({
-    currentSong: state.player.currentSong
-  }))
+  /** 组件内部定义的数据 */
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
+  /** 从redux中获取数据 */
+  const { currentSong } = useAppSelector(
+    (state) => ({
+      currentSong: state.player.currentSong
+    }),
+    shallowEqualApp
+  )
+  /** 组件内的副作用操作 */
+  useEffect(() => {
+    audioRef.current!.src = getSongPlayUrl(currentSong.id)
+    audioRef.current
+      ?.play()
+      .then(() => {
+        console.log('歌曲播放成功')
+      })
+      .catch((err) => {
+        setIsPlaying(false)
+        console.log('歌曲播放失败: ', err)
+      })
+  }, [currentSong])
+
+  /** 组件内部的事件处理 */
+  function handlePlayBtnClick() {
+    // 控制播放器的播放/暂停
+    isPlaying
+      ? audioRef.current?.pause()
+      : audioRef.current?.play().catch(() => setIsPlaying(false))
+
+    // 改变isPlaying的状态
+    setIsPlaying(!isPlaying)
+  }
+
   return (
     <PlayerBarWrapper className="sprite_playbar">
       <div className="content wrap-v2">
-        <PlayerBarControl>
+        <PlayerBarControl isPlaying={isPlaying}>
           <button className="btn sprite_playbar prev"></button>
-          <button className="btn sprite_playbar play"></button>
+          <button
+            className="btn sprite_playbar play"
+            onClick={handlePlayBtnClick}
+          ></button>
           <button className="btn sprite_playbar next"></button>
         </PlayerBarControl>
         <PlayerBarInfo>
@@ -63,6 +99,7 @@ const AppPlayerBar: FC<IProps> = () => {
           </div>
         </PlayerBarOperator>
       </div>
+      <audio ref={audioRef} />
     </PlayerBarWrapper>
   )
 }
